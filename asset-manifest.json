@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/video-game-api/static/css/main.fe0b88b8.css",
+    "main.js": "/video-game-api/static/js/main.8e453dc5.js",
+    "static/js/787.f32c2dff.chunk.js": "/video-game-api/static/js/787.f32c2dff.chunk.js",
+    "index.html": "/video-game-api/index.html",
+    "main.fe0b88b8.css.map": "/video-game-api/static/css/main.fe0b88b8.css.map",
+    "main.8e453dc5.js.map": "/video-game-api/static/js/main.8e453dc5.js.map",
+    "787.f32c2dff.chunk.js.map": "/video-game-api/static/js/787.f32c2dff.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fe0b88b8.css",
+    "static/js/main.8e453dc5.js"
+  ]
+}
