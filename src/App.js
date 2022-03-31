@@ -1,18 +1,29 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import './App.css';
 
 function App() {
  const [gameTitle,setGameTitle]=useState(' ')
- const [serchedgames,setserchgames] =useState('')
-console.log(serchedgames);
+ const [serchGame,setserchgames] =useState([])
+ const [deals,setdeals] = useState([])
+// console.log(gameTitle);
 
   const searchGame= async()=>{
   const responce= await fetch(`https://www.cheapshark.com/api/1.0/games?title=${gameTitle}&limit=3`)
   const data= await responce.json()
   setserchgames(data)
-  // console.log(data)
-  }
+}
+console.log(serchGame)
 
+useEffect(()=>{
+   const dealData = async ()=>{
+     const responce = await fetch("https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=20&pageSize=3")
+     const data  =await responce.json()
+     setdeals(data)
+     console.log(data);
+     console.log("renderes");
+   }
+   dealData()
+},[])
   return (
     <div className="App">
 
@@ -28,19 +39,32 @@ console.log(serchedgames);
   }}
   />
   <button onClick={searchGame}>search game </button>
-  <div className='games'>
-  {serchedgames.map((game,key)=>{
-    return(
-      <div className='game'>{game.external}</div>
-    )
-  })}
+  <div className='games'> 
+    {serchGame.map((game,key)=>{
+      return(
+        <div className='game' key={key}>
+          {game.external}
+          <img src={game.thumb}/>
+          {game.cheapest}
+        </div>
+
+      )
+    })}
   </div>
-  
-  
-  
   </div>      
-      <div className='dealSeaction'>
         <h1>Latest Deals </h1>
+      <div className='dealSeaction'>
+        {deals.map((game,key)=>{
+          return(
+            <div className='' id='deals' key={key}>
+          {game.title} 
+          {/* <img src={game.thumb}/>
+          {game.cheapest} */}
+        </div>
+            
+          )
+
+        })}
       </div>
      </div>
   );
